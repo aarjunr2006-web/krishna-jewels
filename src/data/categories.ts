@@ -1,0 +1,60 @@
+import { Category } from '../lib/types';
+
+export const categories: Category[] = [
+  {
+    id: 'cat-necklaces',
+    name: 'Necklaces',
+    slug: 'necklaces',
+    description: 'From delicate daily-wear chains to ornate festive chokers, handcrafted to frame you beautifully.',
+    image: 'necklaces',
+    featured: true,
+  },
+  {
+    id: 'cat-earrings',
+    name: 'Earrings',
+    slug: 'earrings',
+    description: 'Sleek studs, elegant jhumkas, and contemporary hoops designed for every look and comfort.',
+    image: 'earrings',
+    featured: true,
+  },
+  {
+    id: 'cat-rings',
+    name: 'Rings',
+    slug: 'rings',
+    description: 'Timeless bands, solitaire statements, and traditional gemstone rings made to celebrate every moment.',
+    image: 'rings',
+    featured: true,
+  },
+  {
+    id: 'cat-bracelets',
+    name: 'Bracelets & Bangles',
+    slug: 'bracelets-bangles',
+    description: 'Modern wristwear and classic handcrafted bangles that echo heritage with a light, contemporary touch.',
+    image: 'bracelets-bangles',
+    featured: true,
+  },
+  {
+    id: 'cat-mangalsutras',
+    name: 'Mangalsutras',
+    slug: 'mangalsutras',
+    description: 'Sacred bonds reimagined with sleek, modern gold-plated motifs for the contemporary Indian woman.',
+    image: 'mangalsutras',
+    featured: true,
+  },
+  {
+    id: 'cat-mens',
+    name: "Men's Jewellery",
+    slug: 'mens',
+    description: 'Minimalist rings, sturdy bracelets, and classic kada designs tailored for the modern man.',
+    image: 'mens',
+    featured: true,
+  },
+  {
+    id: 'cat-gifting',
+    name: 'Gifting Sets',
+    slug: 'gifting',
+    description: 'Curated combinations of earrings, necklaces, and matching accessories, beautifully packaged for your loved ones.',
+    image: 'gifting',
+    featured: true,
+  },
+];
