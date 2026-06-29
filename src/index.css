@@ -49,3 +49,67 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Gold Shining / Shimmer keyframe */
+@keyframes shine-sweep {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Shimmer overlay for premium components */
+.shining-ui {
+  position: relative;
+  overflow: hidden;
+}
+
+.shining-ui::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 80px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(232, 217, 168, 0.3) 30%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(232, 217, 168, 0.3) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine-sweep 6s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Fast shine on hover */
+.shining-hover {
+  position: relative;
+  overflow: hidden;
+}
+.shining-hover:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine-sweep 1.2s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+}

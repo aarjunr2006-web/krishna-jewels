@@ -16,9 +16,9 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyle = 'inline-flex items-center justify-center font-sans font-medium uppercase tracking-wider text-sm transition-colors duration-300 py-3 px-6 select-none focus:outline-none focus:ring-1 focus:ring-kj-gold cursor-pointer';
   
   const variantStyles = {
-    primary: 'bg-kj-maroon text-kj-ivory hover:bg-[#521323] active:bg-[#400d1a]',
-    secondary: 'border border-kj-maroon text-kj-maroon hover:bg-kj-maroon hover:text-kj-ivory',
-    outline: 'border border-kj-gold text-kj-charcoal hover:bg-kj-gold hover:text-kj-charcoal',
+    primary: 'bg-kj-maroon text-kj-ivory hover:bg-[#521323] active:bg-[#400d1a] shining-hover',
+    secondary: 'border border-kj-maroon text-kj-maroon hover:bg-kj-maroon hover:text-kj-ivory shining-hover',
+    outline: 'border border-kj-gold text-kj-charcoal hover:bg-kj-gold hover:text-kj-charcoal shining-hover',
     ghost: 'text-kj-charcoal hover:text-kj-gold hover:bg-black/5',
   };
 
