@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { ProductGallery } from '../components/product/ProductGallery';
@@ -18,21 +18,9 @@ export const ProductDetail: React.FC = () => {
     return products.find((p) => p.slug === slug);
   }, [slug]);
 
-  if (!currentProduct) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 py-20 text-center bg-kj-ivory">
-        <h2 className="font-serif text-3xl font-bold text-kj-maroon mb-4">Product Not Found</h2>
-        <p className="font-sans text-sm text-gray-500 mb-8">The product you are looking for does not exist or has been removed.</p>
-        <Link to="/collections/new-arrivals" className="bg-kj-maroon text-kj-ivory px-6 py-3 text-xs uppercase tracking-widest font-bold font-sans">
-          Back to Collections
-        </Link>
-      </div>
-    );
-  }
-
   // State Management
   const [selectedVariant, setSelectedVariant] = useState(
-    currentProduct.variants && currentProduct.variants.length > 0 ? currentProduct.variants[0] : 'Standard'
+    currentProduct?.variants && currentProduct.variants.length > 0 ? currentProduct.variants[0] : 'Standard'
   );
   const [quantity, setQuantity] = useState(1);
   const [pincode, setPincode] = useState('');
@@ -47,7 +35,34 @@ export const ProductDetail: React.FC = () => {
   const openCart = useCartStore((state) => state.setIsOpen);
   
   const toggleWishlist = useWishlistStore((state) => state.toggleItem);
-  const isInWishlist = useWishlistStore((state) => state.isInWishlist(currentProduct.id));
+  const isInWishlist = useWishlistStore((state) => state.isInWishlist(currentProduct?.id ?? ''));
+
+  // Reset state when switching between products
+  useEffect(() => {
+    if (currentProduct) {
+      setSelectedVariant(
+        currentProduct.variants && currentProduct.variants.length > 0 ? currentProduct.variants[0] : 'Standard'
+      );
+      setQuantity(1);
+      setPincode('');
+      setDeliveryMessage('');
+      setIsCheckingPincode(false);
+      setGiftWrap(false);
+      setAddedNote(false);
+    }
+  }, [currentProduct]);
+
+  if (!currentProduct) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-20 text-center bg-kj-ivory">
+        <h2 className="font-serif text-3xl font-bold text-kj-maroon mb-4">Product Not Found</h2>
+        <p className="font-sans text-sm text-gray-500 mb-8">The product you are looking for does not exist or has been removed.</p>
+        <Link to="/collections/new-arrivals" className="bg-kj-maroon text-kj-ivory px-6 py-3 text-xs uppercase tracking-widest font-bold font-sans">
+          Back to Collections
+        </Link>
+      </div>
+    );
+  }
 
   const handleAddToBag = () => {
     // Add to cart with variant & optional gift wrap upcharge metadata if necessary
